@@ -67,7 +67,33 @@ if st.button("Generate and Process Image"):
 
     # Show the original and processed images
     st.image(generated_image, caption="Generated Image", use_column_width=True)
-    st.image(equalized_image, caption="Processed Image", use_column_width=True)
+ 
+
+
+    col1 = st.columns(1)  # Create two columns
+
+    # In the first column, show the original generated image and a download button
+   
+
+    # In the second column, show the processed image and processed edges with download buttons
+    with col1:
+        st.image(equalized_image, caption="Processed Image", use_column_width=True)
+        with open(processed_image_path, "rb") as f:
+            st.download_button(
+                label="Download Processed Image",
+                data=f,
+                file_name=processed_image_path,
+                mime="image/png",
+            )
+
+        st.image(equalized_edges, caption="Processed Edges", use_column_width=True)
+        with open(processed_edges_path, "rb") as f:
+            st.download_button(
+                label="Download Processed Edges",
+                data=f,
+                file_name=processed_edges_path,
+                mime="image/png",
+            )
 
     # Allow download of processed images
     with open(processed_edges_path, "rb") as f:
