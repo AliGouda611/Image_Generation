@@ -59,8 +59,15 @@ if st.button("Generate and Process Image"):
     cv2.imwrite(processed_edges_path, equalized_edges)
     cv2.imwrite(processed_image_path, equalized_image)
 
-    # Display the generated image
+    # Display the generated image and add a download button for it
     st.image(generated_image, caption="Generated Image", use_column_width=True)
+    with open(generated_image_path, "rb") as f:
+        st.download_button(
+            label="Download Generated Image",
+            data=f,
+            file_name=generated_image_path,
+            mime="image/png",
+        )
 
     # Display the preprocessed images side-by-side with download buttons
     col1, col2 = st.columns(2)  # Create two columns for the preprocessed images
