@@ -25,7 +25,7 @@ st.title("Stable Diffusion and Image Processing")
 prompt_text = st.text_input("Enter a prompt for the image:", "")
 
 # Modify the prompt to exclude human body cloth
-prompt = f"{prompt_text} without human body cloth only"
+prompt = f"{prompt_text} without human body"
 
 # Generate the image and apply pre-processing
 if st.button("Generate and Process Image"):
