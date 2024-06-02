@@ -22,7 +22,10 @@ def load_pipeline():
 st.title("Stable Diffusion and Image Processing")
 
 # Input for the text prompt
-prompt = st.text_input("Enter a prompt for the image:", "man blue trousers")
+prompt_text = st.text_input("Enter a prompt for the image:", "")
+
+# Modify the prompt to exclude human body cloth
+prompt = f"{prompt_text} without human body cloth only"
 
 # Generate the image and apply pre-processing
 if st.button("Generate and Process Image"):
